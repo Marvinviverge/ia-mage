@@ -2,7 +2,7 @@ import axios from 'axios';
 import { logout, getToken, isLogged } from './account.service';
 
 const Axios = axios.create({
-    baseURL: 'http://localhost:8080',
+    baseURL: 'https://ia-mage.onrender.com/',
     headers: {
         'Content-Type': 'application/json'
     }
