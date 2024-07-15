@@ -3,15 +3,16 @@ import app from './app.js'
 import * as dotenv from 'dotenv';
 
 dotenv.config({ encoding: "latin1" });
+const port = process.env.SERVER_PORT || 4000;
 
 const startServer = () => {
     mongoose
     .connect(process.env.MONGODB_URL)
     // Demarrage serveur
     .then(() =>
-        app.listen(process.env.SERVER_PORT, () => {
+        app.listen(port, () => {
             console.log(
-                `This server is running on port ${process.env.SERVER_PORT}. Enjoy !`
+                `This server is running on port ${port}. Enjoy !`
             );
         })
     )
