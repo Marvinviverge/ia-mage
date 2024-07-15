@@ -18,9 +18,9 @@ export const GuardAuth = (req, res, next) => {
     }
     
     try {
-        const secret = fs.readFileSync('./validations/public.pem', 'utf-8'); // Lecture de la clé publique
+        const secret = fs.readFileSync('/etc/secrets/public.pem', 'utf-8');
 
-        const decodedToken = jwt.verify(token, secret); // Décodage et vérification du token
+        const decodedToken = jwt.verify(token, secret);
 
         const userId = decodedToken.userId;
         if (req.body.userId && req.body.userId !== userId) {

@@ -40,7 +40,7 @@ export const signin = async (req, res) => {
             return res.status(401).json({ error: "Mot de passe incorrect !" });
         }
         // Connexion valide = token 1H
-        const secret = fs.readFileSync('./validations/private.pem')
+        const secret = fs.readFileSync('/etc/secrets/private.pem', 'utf-8')
         const token = jwt.sign({
             userId: user._id, 
             hasFreeTrial: user.hasFreeTrial,
@@ -68,7 +68,7 @@ export const updateHasFreeTrial = async (req, res) => {
         user.hasFreeTrial = false;
         await user.save();
         
-        const secret = fs.readFileSync('./validations/private.pem')
+        const secret = fs.readFileSync('/etc/secrets/private.pem', 'utf-8')
         const token = jwt.sign({
             userId: user._id, 
             hasFreeTrial: user.hasFreeTrial,
